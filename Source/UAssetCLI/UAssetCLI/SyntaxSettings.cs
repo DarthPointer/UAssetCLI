@@ -1,0 +1,7 @@
+﻿namespace UAssetCLI
+{
+    class SyntaxSettings
+    {
+        
+    }
+}
