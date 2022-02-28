@@ -20,7 +20,9 @@ namespace UAssetCLI
                 { "Exit", new Exit() },
 
                 { "AddName", new AddName() },
-                { "RewriteName", new RewriteName() }
+                { "RewriteName", new RewriteName() },
+
+                { "AddImport", new AddImport() }
             };
 
         public static readonly Dictionary<string, SyntaxSettings> syntaxes =

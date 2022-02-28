@@ -44,10 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandTree.cs" />
+    <Compile Include="Operation\AddImport.cs" />
     <Compile Include="Operation\AddName.cs" />
     <Compile Include="Operation\Exit.cs" />
     <Compile Include="Operation\LoadAsset.cs" />
-    <Compile Include="Operation\Operation.cs" />
+    <Compile Include="Operation\AbstractOperation.cs" />
     <Compile Include="Operation\RewriteName.cs" />
     <Compile Include="Operation\SaveAsset.cs" />
     <Compile Include="Operation\Syntax.cs" />
