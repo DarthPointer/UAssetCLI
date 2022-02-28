@@ -24,6 +24,9 @@ namespace UAssetCLI
 
                 { "LoadAsset", new LoadAsset() },
                 { "SaveAsset", new SaveAsset() },
+
+                { "SetDefaultUE4Version", new SetDefaultUE4Version() },
+
                 { "Exit", new Exit() },
 
                 { "AddName", new AddName() },
@@ -120,7 +123,12 @@ namespace UAssetCLI
 
         public static void SaveConfig()
         {
-            File.WriteAllText(toolDir + relativeConfigFilePath, JsonConvert.SerializeObject(config));
+            File.WriteAllText(toolDir + relativeConfigFilePath, JsonConvert.SerializeObject(config,
+                settings: new JsonSerializerSettings()
+                {
+                    Formatting = Formatting.Indented
+                }
+                ));
         }
     }
 }

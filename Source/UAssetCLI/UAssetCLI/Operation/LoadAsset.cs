@@ -12,7 +12,12 @@ namespace UAssetCLI.Operation
             reports = new List<Report>();
 
             string path = commandTree.subtrees[0].rootString;
-            UE4Version version = (UE4Version)Enum.Parse(typeof(UE4Version), commandTree.subtrees[1].rootString);
+            UE4Version version = Program.config.defaultUE4Version;
+
+            if (commandTree.subtrees.Count >= 2)
+            {
+                version = (UE4Version)Enum.Parse(typeof(UE4Version), commandTree.subtrees[1].rootString);
+            }
 
             UAsset loadedAsset = new UAsset(path, version);
 
