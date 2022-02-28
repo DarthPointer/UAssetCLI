@@ -200,6 +200,7 @@ namespace UAssetCLI
                         {
                             finishedReading = true;
                             inSubtrees = false;
+                            currentIndex++;
 
                             continue;
                         }
@@ -213,6 +214,8 @@ namespace UAssetCLI
                         CommandTree newSubtree = new CommandTree();
                         subtrees.Add(newSubtree);
                         newSubtree.ReadFromString(commandString, ref currentIndex, true);
+
+                        continue;
                     }
                 }
             }

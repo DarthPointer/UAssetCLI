@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
+using Newtonsoft.Json;
 using UAssetAPI;
 using UAssetCLI.Operation;
 
@@ -9,6 +12,10 @@ namespace UAssetCLI
     class Program
     {
         public static UAsset asset;
+        private static string toolDir;
+
+        private const string relativeConfigFilePath = "Config.json";
+        public static Config config = null;
 
         static readonly Dictionary<string, IOperation> operations =
             new Dictionary<string, IOperation>()
@@ -35,8 +42,15 @@ namespace UAssetCLI
 
         public static SyntaxSettings currentSyntax = syntaxes["latest"];
 
+
+
         static void Main(string[] args)
         {
+            toolDir = Assembly.GetExecutingAssembly().Location;
+            toolDir = toolDir.Substring(0, toolDir.LastIndexOf('\\') + 1);
+
+            LoadOrCreateConfig();
+
             while (ProcessSTDINCommand(out List<Report> reports))
             {
                 foreach (Report report in reports)
@@ -45,6 +59,8 @@ namespace UAssetCLI
                 }
             }
         }
+
+
 
         static bool ProcessSTDINCommand(out List<Report> reports)
         {
@@ -81,6 +97,30 @@ namespace UAssetCLI
 
                 return true;
             }
+        }
+
+
+        private static void LoadOrCreateConfig()
+        {
+            if (File.Exists(toolDir + relativeConfigFilePath))
+            {
+                try
+                {
+                    config = JsonConvert.DeserializeObject<Config>(File.ReadAllText(toolDir + relativeConfigFilePath));
+                    return;
+                }
+                catch
+                {
+                }
+            }
+
+            config = new Config();
+            SaveConfig();
+        }
+
+        public static void SaveConfig()
+        {
+            File.WriteAllText(toolDir + relativeConfigFilePath, JsonConvert.SerializeObject(config));
         }
     }
 }
