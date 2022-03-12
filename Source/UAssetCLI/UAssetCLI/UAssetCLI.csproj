@@ -56,6 +56,7 @@
     <Compile Include="Operation\RewriteName.cs" />
     <Compile Include="Operation\SaveAsset.cs" />
     <Compile Include="Operation\SetDefaultUE4Version.cs" />
+    <Compile Include="Operation\SetValue.cs" />
     <Compile Include="Operation\Syntax.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

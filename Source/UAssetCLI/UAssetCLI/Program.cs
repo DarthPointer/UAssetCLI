@@ -32,7 +32,9 @@ namespace UAssetCLI
                 { "AddName", new AddName() },
                 { "RewriteName", new RewriteName() },
 
-                { "AddImport", new AddImport() }
+                { "AddImport", new AddImport() },
+
+                { "SetValue", new SetValue() }
             };
 
         public static readonly Dictionary<string, SyntaxSettings> syntaxes =
