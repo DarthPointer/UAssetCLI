@@ -17,10 +17,12 @@ namespace UAssetCLI
         private const string relativeConfigFilePath = "Config.json";
         public static Config config = null;
 
-        static readonly Dictionary<string, IOperation> operations =
+        public static readonly Dictionary<string, IOperation> operations =
             new Dictionary<string, IOperation>()
             {
                 { "Syntax", new Syntax() },
+
+                { "OperationsList", new OperationsList() },
 
                 { "LoadAsset", new LoadAsset() },
                 { "SaveAsset", new SaveAsset() },
