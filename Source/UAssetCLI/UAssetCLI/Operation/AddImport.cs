@@ -17,52 +17,52 @@ namespace UAssetCLI.Operation
 
             foreach (CommandTree argumentTree in commandTree.subtrees)
             {
-                if (argumentTree.rootString == UAssetCLICommandTreeUtils.packageKeyword)
+                if (argumentTree.rootString == CommandTreeParsers.packageKeyword)
                 {
-                    package = UAssetCLICommandTreeUtils.GenerateNameData(argumentTree);
+                    package = CommandTreeParsers.GenerateNameData(argumentTree);
                     continue;
                 }
 
-                if (argumentTree.rootString == UAssetCLICommandTreeUtils.classKeyword)
+                if (argumentTree.rootString == CommandTreeParsers.classKeyword)
                 {
-                    @class = UAssetCLICommandTreeUtils.GenerateNameData(argumentTree);
+                    @class = CommandTreeParsers.GenerateNameData(argumentTree);
                     continue;
                 }
 
-                if (argumentTree.rootString == UAssetCLICommandTreeUtils.outerKeyword)
+                if (argumentTree.rootString == CommandTreeParsers.outerKeyword)
                 {
-                    outer = UAssetCLICommandTreeUtils.GenerageObjectReference(argumentTree.subtrees[0]);
+                    outer = CommandTreeParsers.GenerageObjectReference(argumentTree.subtrees[0]);
                     continue;
                 }
 
-                if (argumentTree.rootString == UAssetCLICommandTreeUtils.nameKeyword)
+                if (argumentTree.rootString == CommandTreeParsers.nameKeyword)
                 {
-                    name = UAssetCLICommandTreeUtils.GenerateNameData(argumentTree);
+                    name = CommandTreeParsers.GenerateNameData(argumentTree);
                     continue;
                 }
 
                 if (package == null)
                 {
-                    package = UAssetCLICommandTreeUtils.GenerateNameData(argumentTree);
+                    package = CommandTreeParsers.GenerateNameData(argumentTree);
                     continue;
                 }
 
                 if (@class == null)
                 {
-                    @class = UAssetCLICommandTreeUtils.GenerateNameData(argumentTree);
+                    @class = CommandTreeParsers.GenerateNameData(argumentTree);
                     continue;
                 }
 
                 if (name == null)
                 {
-                    name = UAssetCLICommandTreeUtils.GenerateNameData(argumentTree);
+                    name = CommandTreeParsers.GenerateNameData(argumentTree);
                     continue;
                 }
 
                 // Outer is optional thus last positional and defaults to FPackageIndex(0) if omitted
                 if (outer == null)
                 {
-                    outer = UAssetCLICommandTreeUtils.GenerageObjectReference(argumentTree);
+                    outer = CommandTreeParsers.GenerageObjectReference(argumentTree);
                     continue;
                 }
             }

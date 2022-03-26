@@ -11,8 +11,8 @@ namespace UAssetCLI.Operation
         {
             reports = new List<Report>();
 
-            INameReference nameToRewrite = UAssetCLICommandTreeUtils.GenerateNameReference(commandTree.subtrees[0]);
-            FString newName = UAssetCLICommandTreeUtils.GenerateFString(commandTree.subtrees[1]);
+            INameReference nameToRewrite = CommandTreeParsers.GenerateNameReference(commandTree.subtrees[0]);
+            FString newName = CommandTreeParsers.GenerateFString(commandTree.subtrees[1]);
 
             Program.asset.RewriteNameReference(nameToRewrite, newName);
 

@@ -1,15 +1,29 @@
-﻿using UAssetAPI;
+﻿using System;
+using System.Collections.Generic;
+
+using UAssetAPI;
 using UAssetAPI.Extension;
 
 namespace UAssetCLI
 {
-    static class UAssetCLICommandTreeUtils
+    static class CommandTreeParsers
     {
         public const string packageKeyword = "Package";
         public const string classKeyword = "Class";
         public const string outerKeyword = "Outer";
         public const string nameKeyword = "Name";
         public const string indexKeyword = "Index";
+
+       
+        public static readonly Dictionary<Type, Func<CommandTree, object>> objectFromTreeParsers =
+            new Dictionary<Type, Func<CommandTree, object>>()
+            {
+                { typeof(bool), (x) => bool.Parse(x.rootString) },
+                { typeof(int), (x) => int.Parse(x.rootString) },
+                { typeof(float), (x) => float.Parse(x.rootString) },
+                { typeof(byte), (x) => byte.Parse(x.rootString) },
+                { typeof(AssetBoundFName), GenerateAssetBoundFName }
+            };
 
         public static FString GenerateFString(CommandTree commandTree)
         {
@@ -52,6 +66,13 @@ namespace UAssetCLI
             {
                 return GenerateNameData(commandTree);
             }
+        }
+
+        public static AssetBoundFName GenerateAssetBoundFName(CommandTree commandTree)
+        {
+            NameData nameData = GenerateNameData(commandTree);
+
+            return new AssetBoundFName(nameData.name.GetFString(Program.asset), Program.asset, nameData.number);
         }
     }
 }

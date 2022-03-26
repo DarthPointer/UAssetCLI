@@ -10,7 +10,7 @@ namespace UAssetCLI.Operation
         {
             reports = new List<Report>();
 
-            FString newName = UAssetCLICommandTreeUtils.GenerateFString(commandTree.subtrees[0]);
+            FString newName = CommandTreeParsers.GenerateFString(commandTree.subtrees[0]);
             Program.asset.AddNameReference(newName);
 
             return true;
