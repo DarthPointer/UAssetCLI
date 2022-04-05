@@ -31,7 +31,7 @@ namespace UAssetCLI.Operation
 
                 if (argumentTree.rootString == CommandTreeParsers.outerKeyword)
                 {
-                    outer = CommandTreeParsers.GenerageObjectReference(argumentTree.subtrees[0]);
+                    outer = CommandTreeParsers.GenerateObjectReference(argumentTree.subtrees[0]);
                     continue;
                 }
 
@@ -62,7 +62,7 @@ namespace UAssetCLI.Operation
                 // Outer is optional thus last positional and defaults to FPackageIndex(0) if omitted
                 if (outer == null)
                 {
-                    outer = CommandTreeParsers.GenerageObjectReference(argumentTree);
+                    outer = CommandTreeParsers.GenerateObjectReference(argumentTree);
                     continue;
                 }
             }

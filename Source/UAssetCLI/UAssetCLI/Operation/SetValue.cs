@@ -13,13 +13,13 @@ namespace UAssetCLI.Operation
         {
             reports = new List<Report>();
 
-            IObjectReference objectReference = CommandTreeParsers.GenerageObjectReference(commandTree.subtrees[0]);
+            IObjectReference objectReference = CommandTreeParsers.GenerateObjectReference(commandTree.subtrees[0]);
             FObjectResource @object = objectReference.GetObject(Program.asset);
 
             StringAccessorSequence stringAccessorSequence = new StringAccessorSequence(commandTree.subtrees[1].rootString);
             IStringAccessible stringAccessible = stringAccessorSequence.Access(@object);
 
-            stringAccessible.SetValue(CommandTreeParsers.objectFromTreeParsers[stringAccessible.ValueType](commandTree.subtrees[2]));
+            stringAccessible.SetValue(CommandTreeParsers.GenerateObject(stringAccessible.ValueType, commandTree.subtrees[2]));
 
             return true;
         }
