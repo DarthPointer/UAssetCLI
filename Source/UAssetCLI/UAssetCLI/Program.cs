@@ -27,6 +27,9 @@ namespace UAssetCLI
                 { "LoadAsset", new LoadAsset() },
                 { "SaveAsset", new SaveAsset() },
 
+                { "ExportToJSON", new ExportToJSON() },
+                { "ImportFromJSON", new ImportFromJSON() },
+
                 { "SetDefaultUE4Version", new SetDefaultUE4Version() },
 
                 { "Exit", new Exit() },
